@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package tugo.campaigns.v1;
+
+service CampaignService   {
+  rpc GetCampaignList (google.protobuf.Empty) returns (CampaignListResponse) {}
+}
+
+message CampaignListResponse {
+  repeated Campaign campaigns = 1;
+}
+
+message Campaign {
+  int64 id = 1;
+  string campaign_name = 2;
+  int32 campaign_type = 3;
+  int32 campaign_status = 4;
+  int64 expected_revenue = 5;
+  string closing_date = 6;
+}

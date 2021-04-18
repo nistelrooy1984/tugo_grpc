@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package tugo.contacts.v1;
+
+service ContactService   {
+  rpc GetContactList (google.protobuf.Empty) returns (ContactListResponse) {}
+}
+
+message ContactListResponse {
+  repeated Contact contacts = 1;
+}
+
+message Contact {
+  int64 id = 1;
+  string last_name = 2;
+  string first_name = 3;
+  string phone = 4;
+  string email = 5;
+  int32 gender = 6;
+  string organization_name = 7;
+}

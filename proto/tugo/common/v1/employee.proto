@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package tugo.common.v1;
+
+service EmployeeService   {
+  rpc GetEmployeeList (google.protobuf.Empty) returns (EmployeeListResponse) {}
+
+  rpc GetEmployeeByNumber (EmployeeNumber) returns (Employee) {}
+
+  rpc GetEmployeeById (EmployeeId) returns (Employee) {}
+}
+
+message EmployeeListResponse {
+  repeated Employee employees = 1;
+}
+
+message Employee {
+  int64 id = 1;
+  string employee_number = 2;
+  string last_name = 3;
+  string first_name = 4;
+  string phone = 5;
+  string email = 6;
+  int32 gender = 7;
+}
+
+message EmployeeNumber {
+  string employee_number = 1;
+}
+
+message EmployeeId {
+  int64 employee_id = 1;
+}

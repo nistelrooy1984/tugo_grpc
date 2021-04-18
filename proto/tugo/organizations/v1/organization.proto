@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package tugo.organizations.v1;
+
+service OrganizationService   {
+  rpc GetOrganizationList (google.protobuf.Empty) returns (OrganizationListResponse) {}
+}
+
+message OrganizationListResponse {
+  repeated Organization organizations = 1;
+}
+
+message Organization {
+  int64 id = 1;
+  string organization_name = 2;
+  string website = 3;
+  string phone = 4;
+  string email = 5;
+}

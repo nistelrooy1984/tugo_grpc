@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package tugo.leads.v1;
+
+service LeadService   {
+  rpc GetLeadList (google.protobuf.Empty) returns (LeadListResponse) {}
+}
+
+message LeadListResponse {
+  repeated Lead leads = 1;
+}
+
+message Lead {
+  int64 id = 1;
+  string lead_no = 2;
+  string last_name = 3;
+  string first_name = 4;
+  string phone = 5;
+  string email = 6;
+  int32 gender = 7;
+}
