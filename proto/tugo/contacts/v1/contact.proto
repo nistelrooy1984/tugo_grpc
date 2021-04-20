@@ -5,19 +5,66 @@ import "google/protobuf/empty.proto";
 package tugo.contacts.v1;
 
 service ContactService   {
-  rpc GetContactList (google.protobuf.Empty) returns (ContactListResponse) {}
+  // --
+  // cnt_00001 Get Contact By Id
+  // --
+  rpc GetContactById (ContactIdRequest) returns (ContactResponse) {};
+
+  // --
+  // cnt_00002 Get Contact By Owner
+  // --
+  rpc GetContactByOwner (ContactOwnerIdRequest) returns (ContactListResponse) {};
+
+  // --
+  // cnt_00003 Get List Contacts
+  // --
+  rpc GetContactList (google.protobuf.Empty) returns (ContactListResponse) {};
+
+  // --
+  // cnt_00004 Upsert Contact
+  // --
+  rpc UpsertContact(UpsertContactRequest) returns (UpsertContactResponse) {};
+}
+
+message ContactIdRequest {
+  int64 contact_id = 1;
+}
+
+message ContactOwnerIdRequest {
+  int64 contact_owner_id = 1;
+}
+
+message UpsertContactRequest {
+  Contact contact = 1;
+}
+
+message ContactResponse {
+  Contact contact = 1;
 }
 
 message ContactListResponse {
   repeated Contact contacts = 1;
 }
 
+message UpsertContactResponse {
+  Contact contact = 1;
+}
+
 message Contact {
-  int64 id = 1;
-  string last_name = 2;
-  string first_name = 3;
-  string phone = 4;
-  string email = 5;
-  int32 gender = 6;
-  string organization_name = 7;
+  int64 id = 1;  // ID
+  string first_name = 2; // First Name
+  string last_name = 3; // Last Name
+  string email = 4; // Email
+  string phone = 5; // Phone
+  string title = 6; // Title
+  int64 creator_id = 7; // Created By
+  int64 owner_id = 8; // Assigned To
+  int64 modified_by_id = 9; // Modified By
+  int64 master_leadsource_id = 10; // Lead Source
+  bool is_converted_from_lead = 11; // Is Converted From Lead
+  bool is_do_not_call = 12; // Do Not Call
+  string source = 13; // Source
+  string description = 14; // Description Details
+  string created_at = 15; // Created At
+  string updated_at = 16; // Updated At
 }
