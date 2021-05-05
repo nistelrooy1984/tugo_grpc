@@ -5,19 +5,83 @@ import "google/protobuf/empty.proto";
 package tugo.leads.v1;
 
 service LeadService   {
-  rpc GetLeadList (google.protobuf.Empty) returns (LeadListResponse) {}
+  // --
+  // led_00001 Get Lead By Id
+  // --
+  rpc GetLeadById (LeadIdRequest) returns (LeadResponse) {};
+
+  // --
+  // led_00002 Get Leads By Owner Id (Assigned To)
+  // --
+  rpc GetLeadsByOwnerId (LeadOwnerIdRequest) returns (LeadsResponse) {};
+
+  // --
+  // led_00003 Get Leads
+  // --
+  rpc GetLeads (google.protobuf.Empty) returns (LeadsResponse) {};
+
+  // --
+  // led_00004 Upsert Lead
+  // --
+  rpc UpsertLead(UpsertLeadRequest) returns (UpsertLeadResponse) {};
+
+  // --
+  // led_00005 Upsert Leads
+  // --
+  rpc UpsertLeads(UpsertLeadsRequest) returns (UpsertLeadsResponse) {};
 }
 
-message LeadListResponse {
+message LeadIdRequest {
+  int64 lead_id = 1;
+}
+
+message LeadResponse {
+  Lead lead = 1;
+}
+
+message LeadOwnerIdRequest {
+  int64 owner_id = 1;
+}
+
+message LeadsResponse {
+  repeated Lead leads = 1;
+}
+
+message UpsertLeadRequest {
+  Lead lead = 1;
+}
+
+message UpsertLeadResponse {
+  Lead lead = 1;
+}
+
+message UpsertLeadsRequest {
+  repeated Lead leads = 1;
+}
+
+message UpsertLeadsResponse {
   repeated Lead leads = 1;
 }
 
 message Lead {
-  int64 id = 1;
-  string lead_no = 2;
-  string last_name = 3;
-  string first_name = 4;
-  string phone = 5;
-  string email = 6;
-  int32 gender = 7;
+  int64 id = 1;  // ID
+  string first_name = 2; // First Name
+  string last_name = 3; // Last Name
+  string phone = 4; // Phone
+  string email = 5; // Email
+  int64 master_status_id = 6; // Lead Status
+  int64 master_lead_source_id = 7; // Lead Source
+  int64 master_industry_id = 8; // Industry
+  int64 master_rating_id = 9; // Rating
+  string address = 10; // Address
+  string ward = 11; // Ward
+  string district = 12; // District
+  string province = 13; // Province
+  string country = 14; // Country
+  string description = 15; // Description
+  int64 creator_id = 16; // Created By
+  int64 owner_id = 17; // Assigned To
+  int64 modified_by_id = 18; // Modified By
+  string created_at = 19; // Created At
+  string updated_at = 20; // Updated At
 }
