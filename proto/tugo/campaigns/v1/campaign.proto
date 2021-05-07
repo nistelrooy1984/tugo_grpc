@@ -1,22 +1,90 @@
 syntax = "proto3";
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
 
 package tugo.campaigns.v1;
 
 service CampaignService   {
-  rpc GetCampaignList (google.protobuf.Empty) returns (CampaignListResponse) {}
+  // --
+  // cmp_00001 Get Campaign By Id
+  // --
+  rpc GetCampaignById (CampaignIdRequest) returns (CampaignResponse) {};
+
+  // --
+  // cmp_00002 Get Campaign By Owner Id (Assigned To)
+  // --
+  rpc GetCampaignsByOwnerId (CampaignOwnerIdRequest) returns (CampaignsResponse) {};
+
+  // --
+  // cmp_00003 Get Campaigns
+  // --
+  rpc GetCampaigns (google.protobuf.Empty) returns (CampaignsResponse) {};
+
+  // --
+  // cmp_00004 Upsert Campaign
+  // --
+  rpc UpsertCampaign(UpsertCampaignRequest) returns (UpsertCampaignResponse) {};
+
+  // --
+  // cmp_00005 Upsert Campaigns
+  // --
+  rpc UpsertCampaigns(UpsertCampaignsRequest) returns (UpsertCampaignsResponse) {};
 }
 
-message CampaignListResponse {
+message CampaignIdRequest {
+  google.protobuf.Int64Value campaign_id = 1;
+}
+
+message CampaignResponse {
+  Campaign campaign = 1;
+}
+
+message CampaignOwnerIdRequest {
+  google.protobuf.Int64Value campaign_owner_id = 1;
+}
+
+message CampaignsResponse {
+  repeated Campaign campaigns = 1;
+}
+
+
+message UpsertCampaignRequest {
+  Campaign campaign = 1;
+}
+
+message UpsertCampaignResponse {
+  Campaign campaign = 1;
+}
+
+message UpsertCampaignsRequest {
+  repeated Campaign campaigns = 1;
+}
+
+message UpsertCampaignsResponse {
   repeated Campaign campaigns = 1;
 }
 
 message Campaign {
-  int64 id = 1;
-  string campaign_name = 2;
-  int32 campaign_type = 3;
-  int32 campaign_status = 4;
-  int64 expected_revenue = 5;
-  string closing_date = 6;
+  google.protobuf.Int64Value id = 1; // ID
+  google.protobuf.StringValue campaign_name = 2; // Campaign Name
+  google.protobuf.StringValue expected_close_date = 3; // Expected Close Date
+  google.protobuf.Int64Value master_status_id = 4; // Campaign Status
+  google.protobuf.Int64Value master_campaign_type = 5; // Campaign Type
+  google.protobuf.FloatValue budget_cost = 6; // Budget Cost
+  google.protobuf.FloatValue actual_cost = 7; // Actual Cost
+  google.protobuf.DoubleValue expected_revenue = 8; // Expected Revenue
+  google.protobuf.Int64Value master_expected_response_id = 9;// Expected Response
+  google.protobuf.Int64Value expected_sales_count = 10; // Expected Sales Count
+  google.protobuf.Int64Value actual_sales_count = 11; // Actual Sales Count
+  google.protobuf.Int64Value expected_response_count = 12; // Expected Response Count
+  google.protobuf.Int64Value actual_response_count = 13; // Actual Response Count
+  google.protobuf.FloatValue expected_roi = 14; // Expected ROI
+  google.protobuf.FloatValue actual_roi = 15; // Actual ROI
+  google.protobuf.StringValue description = 16; // Description
+  google.protobuf.Int64Value creator_id = 17; // Created By
+  google.protobuf.Int64Value owner_id = 18; // Assigned To
+  google.protobuf.Int64Value modified_by_id = 19; // Modified By
+  google.protobuf.StringValue created_at =20; // Created At
+  google.protobuf.StringValue updated_at = 21; // Updated At
 }

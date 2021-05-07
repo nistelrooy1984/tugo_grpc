@@ -1,21 +1,89 @@
 syntax = "proto3";
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
 
 package tugo.organizations.v1;
 
 service OrganizationService   {
-  rpc GetOrganizationList (google.protobuf.Empty) returns (OrganizationListResponse) {}
+  // --
+  // org_00001 Get Organization By Id
+  // --
+  rpc GetOrganizationById (OrganizationIdRequest) returns (OrganizationResponse) {};
+
+  // --
+  // org_00002 Get Organizations By Owner Id (Assigned To)
+  // --
+  rpc GetOrganizationsByOwnerId (OrganizationOwnerIdRequest) returns (OrganizationsResponse) {};
+
+  // --
+  // org_00003 Get Organizations
+  // --
+  rpc GetOrganizations (google.protobuf.Empty) returns (OrganizationsResponse) {};
+
+  // --
+  // org_00004 Upsert Organization
+  // --
+  rpc UpsertOrganization(UpsertOrganizationRequest) returns (UpsertOrganizationResponse) {};
+
+  // --
+  // org_00005 Upsert Organizations
+  // --
+  rpc UpsertOrganizations(UpsertOrganizationsRequest) returns (UpsertOrganizationsResponse) {};
 }
 
-message OrganizationListResponse {
+message OrganizationIdRequest {
+  google.protobuf.Int64Value organization_id = 1;
+}
+
+message OrganizationResponse {
+  Organization organization = 1;
+}
+
+message OrganizationOwnerIdRequest {
+  google.protobuf.Int64Value owner_id = 1;
+}
+
+message OrganizationsResponse {
+  repeated Organization organizations = 1;
+}
+
+message UpsertOrganizationRequest {
+  Organization organization = 1;
+}
+
+message UpsertOrganizationResponse {
+  Organization organization = 1;
+}
+
+message UpsertOrganizationsRequest {
+  repeated Organization organizations = 1;
+}
+
+message UpsertOrganizationsResponse {
   repeated Organization organizations = 1;
 }
 
 message Organization {
-  int64 id = 1;
-  string organization_name = 2;
-  string website = 3;
-  string phone = 4;
-  string email = 5;
+  google.protobuf.Int64Value id = 1; // ID
+  google.protobuf.StringValue organization_name = 2; // Organization Name
+  google.protobuf.StringValue phone = 3; // Phone
+  google.protobuf.StringValue email = 4; // Email
+  google.protobuf.StringValue website = 5; // Website
+  google.protobuf.Int64Value employees = 6; // Employees
+  google.protobuf.DoubleValue annual_revenue = 7; // Annual Revenue
+  google.protobuf.Int64Value master_industry_id = 8; // Industry
+  google.protobuf.Int64Value master_type_id = 9; // Type
+  google.protobuf.Int64Value master_status_id = 10; // Organization Status
+  google.protobuf.StringValue address = 11; // Address
+  google.protobuf.Int64Value master_ward_id = 12; // Ward
+  google.protobuf.Int64Value master_district_id = 13; // District
+  google.protobuf.Int64Value master_province_id = 14; // Province
+  google.protobuf.Int64Value master_country_id = 15; // Country
+  google.protobuf.StringValue description = 16; // Description
+  google.protobuf.Int64Value creator_id = 17; // Created By
+  google.protobuf.Int64Value owner_id = 18; // Assigned To
+  google.protobuf.Int64Value modified_by_id = 19; // Modified By
+  google.protobuf.StringValue created_at = 20; // Created At
+  google.protobuf.StringValue updated_at = 21; // Updated At
 }

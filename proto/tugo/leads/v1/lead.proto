@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
 
 package tugo.leads.v1;
 
@@ -32,7 +33,7 @@ service LeadService   {
 }
 
 message LeadIdRequest {
-  int64 lead_id = 1;
+  google.protobuf.Int64Value lead_id = 1;
 }
 
 message LeadResponse {
@@ -40,7 +41,7 @@ message LeadResponse {
 }
 
 message LeadOwnerIdRequest {
-  int64 owner_id = 1;
+  google.protobuf.Int64Value owner_id = 1;
 }
 
 message LeadsResponse {
@@ -64,24 +65,24 @@ message UpsertLeadsResponse {
 }
 
 message Lead {
-  int64 id = 1;  // ID
-  string first_name = 2; // First Name
-  string last_name = 3; // Last Name
-  string phone = 4; // Phone
-  string email = 5; // Email
-  int64 master_status_id = 6; // Lead Status
-  int64 master_lead_source_id = 7; // Lead Source
-  int64 master_industry_id = 8; // Industry
-  int64 master_rating_id = 9; // Rating
-  string address = 10; // Address
-  string ward = 11; // Ward
-  string district = 12; // District
-  string province = 13; // Province
-  string country = 14; // Country
-  string description = 15; // Description
-  int64 creator_id = 16; // Created By
-  int64 owner_id = 17; // Assigned To
-  int64 modified_by_id = 18; // Modified By
-  string created_at = 19; // Created At
-  string updated_at = 20; // Updated At
+  google.protobuf.Int64Value id = 1;  // ID
+  google.protobuf.StringValue first_name = 2; // First Name
+  google.protobuf.StringValue last_name = 3; // Last Name
+  google.protobuf.StringValue phone = 4; // Phone
+  google.protobuf.StringValue email = 5; // Email
+  google.protobuf.Int64Value master_status_id = 6; // Lead Status
+  google.protobuf.Int64Value master_lead_source_id = 7; // Lead Source
+  google.protobuf.Int64Value master_industry_id = 8; // Industry
+  google.protobuf.Int64Value master_rating_id = 9; // Rating
+  google.protobuf.StringValue address = 10; // Address
+  google.protobuf.Int64Value master_ward_id = 11; // Ward
+  google.protobuf.Int64Value master_district_id = 12; // District
+  google.protobuf.Int64Value master_province_id = 13; // Province
+  google.protobuf.Int64Value master_country_id = 14; // Country
+  google.protobuf.StringValue description = 15; // Description
+  google.protobuf.Int64Value creator_id = 16; // Created By
+  google.protobuf.Int64Value owner_id = 17; // Assigned To
+  google.protobuf.Int64Value modified_by_id = 18; // Modified By
+  google.protobuf.StringValue created_at = 19; // Created At
+  google.protobuf.StringValue updated_at = 20; // Updated At
 }

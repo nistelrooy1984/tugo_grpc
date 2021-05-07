@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+package tugo.common.v1;
+
+service RoleService   {
+  // --
+  // cmn_00004 Get Role By Id
+  // --
+  rpc GetRoleById (RoleIdRequest) returns (RoleResponse) {};
+
+  // --
+  // cmn_00005 Get Roles
+  // --
+  rpc GetRoles (google.protobuf.Empty) returns (RolesResponse) {};
+
+  // --
+  // cmn_00006 Upsert Role
+  // --
+  rpc UpsertRole(UpsertRoleRequest) returns (UpsertRoleResponse) {};
+}
+
+message RoleIdRequest {
+  google.protobuf.Int64Value role_id = 1;
+}
+  
+message RoleResponse {
+  Role role = 1;
+}
+
+message RolesResponse {
+  repeated Role roles = 1;
+}
+
+message UpsertRoleRequest {
+  Role role = 1;
+}
+
+message UpsertRoleResponse {
+  Role role = 1;
+}
+
+message Role {
+  google.protobuf.Int64Value id = 1; // ID
+  google.protobuf.StringValue role_name = 2; // Role Name
+  google.protobuf.StringValue parent_role = 3; // Parent Role
+  google.protobuf.Int64Value depth = 4; // Depth
+  google.protobuf.StringValue description = 5; // Description
+  google.protobuf.StringValue created_at = 6; // Created At
+  google.protobuf.StringValue updated_at = 7; // Updated At
+}
