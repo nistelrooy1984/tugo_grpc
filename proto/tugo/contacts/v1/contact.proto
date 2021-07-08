@@ -41,7 +41,7 @@ message ContactResponse {
 }
 
 message ContactOwnerIdRequest {
-  google.protobuf.Int64Value contact_owner_id = 1;
+  google.protobuf.Int64Value owner_id = 1;
 }
 
 message ContactsResponse {
