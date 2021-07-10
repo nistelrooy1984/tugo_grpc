@@ -30,6 +30,11 @@ service LeadService   {
   // led_00005 Upsert Leads
   // --
   rpc UpsertLeads(UpsertLeadsRequest) returns (UpsertLeadsResponse) {};
+
+  // --
+  // led_00006 Get All Master
+  // --
+  rpc GetAllMaster(google.protobuf.Empty) returns (AllMasterResponse) {};
 }
 
 message LeadIdRequest {
@@ -64,6 +69,13 @@ message UpsertLeadsResponse {
   repeated Lead leads = 1;
 }
 
+message AllMasterResponse {
+  repeated Country countries = 1;
+  repeated Province provinces = 2;
+  repeated District districts = 3;
+  repeated Ward wards = 4;
+}
+
 message Lead {
   google.protobuf.Int64Value id = 1;  // ID
   google.protobuf.StringValue first_name = 2; // First Name
@@ -85,4 +97,43 @@ message Lead {
   google.protobuf.Int64Value modified_by_id = 18; // Modified By
   google.protobuf.StringValue created_at = 19; // Created At
   google.protobuf.StringValue updated_at = 20; // Updated At
+}
+
+message Country {
+  google.protobuf.Int64Value id = 1;
+  google.protobuf.StringValue name = 2;
+  google.protobuf.Int64Value order = 3;
+  google.protobuf.BoolValue is_usable = 4;
+  google.protobuf.StringValue created_at = 5;
+  google.protobuf.StringValue updated_at = 6;
+}
+
+message Province {
+  google.protobuf.Int64Value id = 1;
+  google.protobuf.StringValue name = 2;
+  google.protobuf.Int64Value master_country_id = 3;
+  google.protobuf.Int64Value order = 4;
+  google.protobuf.BoolValue is_usable = 5;
+  google.protobuf.StringValue created_at = 6;
+  google.protobuf.StringValue updated_at = 7;
+}
+
+message District {
+  google.protobuf.Int64Value id = 1;
+  google.protobuf.StringValue name = 2;
+  google.protobuf.Int64Value master_province_id = 3;
+  google.protobuf.Int64Value order = 4;
+  google.protobuf.BoolValue is_usable = 5;
+  google.protobuf.StringValue created_at = 6;
+  google.protobuf.StringValue updated_at = 7;
+}
+
+message Ward {
+  google.protobuf.Int64Value id = 1;
+  google.protobuf.StringValue name = 2;
+  google.protobuf.Int64Value master_district_id = 3;
+  google.protobuf.Int64Value order = 4;
+  google.protobuf.BoolValue is_usable = 5;
+  google.protobuf.StringValue created_at = 6;
+  google.protobuf.StringValue updated_at = 7;
 }
