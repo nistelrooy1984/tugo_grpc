@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+package tugo.common.v1;
+
+service MasterService {
+  // --
+  // cmn_00011 Get Countries and Provinces and Districts
+  // --
+  rpc GetCountriesProvincesDistricts(google.protobuf.Empty) returns (CountriesProvincesDistrictsResponse) {};
+
+  // --
+  // cmn_00012 Get Wards By District ID
+  // --
+  rpc GetWardsByDistrictId(DistrictIdRequest) returns (WardsResponse) {};
+}
+
+message CountriesProvincesDistrictsResponse {
+  repeated Country countries = 1; // Countries
+  repeated Province provinces = 2; // Provinces
+  repeated District districts = 3; // Districts
+}
+
+message DistrictIdRequest {
+  google.protobuf.Int64Value district_id = 1;
+}
+
+message WardsResponse {
+  repeated Ward wards = 1; // Wards
+}
+
+message Country {
+  google.protobuf.Int64Value id = 1; // ID
+  google.protobuf.StringValue name = 2; // Name
+  google.protobuf.StringValue code = 3; // Code
+  google.protobuf.StringValue code_name = 4; // Code Name
+  google.protobuf.Int64Value phone_code = 5; // Phone Code
+  google.protobuf.Int32Value order = 6; // Order
+  google.protobuf.BoolValue is_usable = 7; // Is Usable
+}
+
+message Province {
+  google.protobuf.Int64Value id = 1; // ID
+  google.protobuf.StringValue name = 2; // Name
+  google.protobuf.StringValue code = 3; // Code
+  google.protobuf.StringValue code_name = 4; // Code Name
+  google.protobuf.StringValue  division_type = 5; // Division Type
+  google.protobuf.Int64Value phone_code = 6; // Phone Code
+  google.protobuf.Int32Value order = 7; // Order
+  google.protobuf.BoolValue is_usable = 8; // Is Usable
+  google.protobuf.Int64Value master_country_id = 9; // Country ID
+}
+
+message District {
+  google.protobuf.Int64Value id = 1; // ID
+  google.protobuf.StringValue name = 2; // Name
+  google.protobuf.StringValue code = 3; // Code
+  google.protobuf.StringValue code_name = 4; // Code Name
+  google.protobuf.StringValue division_type = 5; // Division Type
+  google.protobuf.StringValue short_code_name = 6; // Short Code Name
+  google.protobuf.Int32Value order = 7; // Order
+  google.protobuf.BoolValue is_usable = 8; // Is Usable
+  google.protobuf.Int64Value master_province_id = 9; // Province ID
+}
+
+message Ward {
+  google.protobuf.Int64Value id = 1; // ID
+  google.protobuf.StringValue name = 2; // Name
+  google.protobuf.StringValue code = 3; // Code
+  google.protobuf.StringValue code_name = 4; // Code Name
+  google.protobuf.StringValue division_type = 5; // Division Type
+  google.protobuf.StringValue short_code_name = 6; // Short Code Name
+  google.protobuf.Int32Value order = 7; // Order
+  google.protobuf.BoolValue is_usable = 8; // Is Usable
+  google.protobuf.Int64Value master_district_id = 9; // District ID
+}

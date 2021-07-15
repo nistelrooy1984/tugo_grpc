@@ -5,11 +5,11 @@ import "google/protobuf/wrappers.proto";
 
 package tugo.common.v1;
 
-service UserService   {
+service UserService {
   // --
-  // cmn_00007 Get User By Id
+  // cmn_00007 Get User By User Name
   // --
-  rpc GetUserById (UserIdRequest) returns (UserResponse) {};
+  rpc GetUserByUserName (UserNameRequest) returns (UserResponse) {};
 
   // --
   // cmn_00008 Get Users
@@ -20,10 +20,15 @@ service UserService   {
   // cmn_00009 Upsert User
   // --
   rpc UpsertUser(UpsertUserRequest) returns (UpsertUserResponse) {};
+
+  // --
+  // cmn_00010 User Login
+  // --
+  rpc UserLogin(LoginInfoRequest) returns (UserResponse) {};
 }
 
-message UserIdRequest {
-  google.protobuf.Int64Value user_id = 1;
+message UserNameRequest {
+  google.protobuf.StringValue user_name = 1;
 }
   
 message UserResponse {
@@ -42,27 +47,27 @@ message UpsertUserResponse {
   User user = 1;
 }
 
+message LoginInfoRequest {
+  google.protobuf.StringValue user_name = 1; // User Name
+  google.protobuf.StringValue email = 2; // Email
+  google.protobuf.StringValue phone = 3; // Phone
+  google.protobuf.StringValue encrypted_password = 4; // Password
+}
+
 message User {
   google.protobuf.Int64Value id = 1; // ID
   google.protobuf.StringValue user_name = 2; // User Name
   google.protobuf.StringValue encrypted_password = 3; // Password
   google.protobuf.StringValue first_name = 4; // First Name
   google.protobuf.StringValue last_name = 5; // Last Name
-  google.protobuf.StringValue phone = 6; // Phone
-  google.protobuf.StringValue email = 7; // Email
-  google.protobuf.Int64Value master_department_id = 8; // Department
-  google.protobuf.Int64Value role_id = 9; // Reports To
-  google.protobuf.Int64Value group_id = 10; // Reports To
-  google.protobuf.BoolValue is_admin = 11; // User Type
-  google.protobuf.Int64Value reports_to_id = 12; // Reports To
-  google.protobuf.Int64Value creator_id = 13; // Created By
-  google.protobuf.Int64Value modified_by_id = 14; // Modified By
-  google.protobuf.StringValue address = 15; // Address
-  google.protobuf.Int64Value master_ward_id = 16; // Ward
-  google.protobuf.Int64Value master_district_id = 17; // District
-  google.protobuf.Int64Value master_province_id = 18; // Province
-  google.protobuf.Int64Value master_country_id = 19; // Country
-  google.protobuf.StringValue description = 20; // Description
-  google.protobuf.StringValue created_at = 21; // Created At
-  google.protobuf.StringValue updated_at = 22; // Updated At
+  google.protobuf.StringValue email = 6; // Email
+  google.protobuf.StringValue phone = 7; // Phone
+  google.protobuf.Int64Value department_id = 8; // Department ID
+  google.protobuf.Int64Value role_id = 9; // Role ID
+  google.protobuf.Int64Value reports_to_id = 10; // Reports To ID
+  google.protobuf.BoolValue is_admin = 11; // Is Admin
+  google.protobuf.Int64Value modified_by_id = 12; // Modified By ID
+  google.protobuf.StringValue description = 13; // Description
+  google.protobuf.StringValue created_at = 14; // Created At
+  google.protobuf.StringValue updated_at = 15; // Updated At
 }

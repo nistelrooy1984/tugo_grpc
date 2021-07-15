@@ -5,25 +5,25 @@ import "google/protobuf/wrappers.proto";
 
 package tugo.common.v1;
 
-service RoleService   {
+service RoleService {
   // --
-  // cmn_00004 Get Role By Id
+  // cmn_00001 Get Role By Id
   // --
   rpc GetRoleById (RoleIdRequest) returns (RoleResponse) {};
 
   // --
-  // cmn_00005 Get Roles
+  // cmn_00002 Get Roles
   // --
   rpc GetRoles (google.protobuf.Empty) returns (RolesResponse) {};
 
   // --
-  // cmn_00006 Upsert Role
+  // cmn_00003 Upsert Role
   // --
   rpc UpsertRole(UpsertRoleRequest) returns (UpsertRoleResponse) {};
 }
 
 message RoleIdRequest {
-  google.protobuf.Int64Value role_id = 1;
+  google.protobuf.Int64Value id = 1;
 }
   
 message RoleResponse {
@@ -44,10 +44,11 @@ message UpsertRoleResponse {
 
 message Role {
   google.protobuf.Int64Value id = 1; // ID
-  google.protobuf.StringValue role_name = 2; // Role Name
-  google.protobuf.StringValue parent_role = 3; // Parent Role
-  google.protobuf.Int64Value depth = 4; // Depth
-  google.protobuf.StringValue description = 5; // Description
-  google.protobuf.StringValue created_at = 6; // Created At
-  google.protobuf.StringValue updated_at = 7; // Updated At
+  google.protobuf.StringValue role_id = 2; // Role ID
+  google.protobuf.StringValue role_name = 3; // Role Name
+  google.protobuf.StringValue parent_role = 4; // Parent Role
+  google.protobuf.Int64Value depth = 5; // Depth
+  google.protobuf.StringValue description = 6; // Description
+  google.protobuf.StringValue created_at = 7; // Created At
+  google.protobuf.StringValue updated_at = 8; // Updated At
 }

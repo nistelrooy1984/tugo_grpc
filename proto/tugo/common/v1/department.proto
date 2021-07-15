@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+package tugo.common.v1;
+
+service DepartmentService {
+  // --
+  // cmn_00004 Get Department By Id
+  // --
+  rpc GetDepartmentById (DepartmentIdRequest) returns (DepartmentResponse) {};
+
+  // --
+  // cmn_00005 Get Departments
+  // --
+  rpc GetDepartments (google.protobuf.Empty) returns (DepartmentsResponse) {};
+
+  // --
+  // cmn_00006 Upsert Department
+  // --
+  rpc UpsertDepartment(UpsertDepartmentRequest) returns (UpsertDepartmentResponse) {};
+}
+
+message DepartmentIdRequest {
+  google.protobuf.Int64Value id = 1;
+}
+
+message DepartmentResponse {
+    Department department = 1;
+}
+
+message DepartmentsResponse {
+  repeated Department departments = 1;
+}
+
+message UpsertDepartmentRequest {
+  Department department = 1;
+}
+
+message UpsertDepartmentResponse {
+  Department department = 1;
+}
+
+message Department {
+  google.protobuf.Int64Value id = 1; // ID
+  google.protobuf.StringValue department_name = 2; // Department Name
+  google.protobuf.Int64Value parent_department_id = 3; // Parent Department ID
+  google.protobuf.StringValue description = 4; // Description
+  google.protobuf.StringValue created_at = 5; // Created At
+  google.protobuf.StringValue updated_at = 6; // Updated At
+}
