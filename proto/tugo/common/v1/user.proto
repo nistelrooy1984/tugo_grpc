@@ -68,6 +68,7 @@ message User {
   google.protobuf.BoolValue is_admin = 11; // Is Admin
   google.protobuf.Int64Value modified_by_id = 12; // Modified By ID
   google.protobuf.StringValue description = 13; // Description
-  google.protobuf.StringValue created_at = 14; // Created At
-  google.protobuf.StringValue updated_at = 15; // Updated At
+  google.protobuf.Int64Value deleted = 14; // Deleted
+  google.protobuf.StringValue created_at = 15; // Created At
+  google.protobuf.StringValue updated_at = 16; // Updated At
 }
