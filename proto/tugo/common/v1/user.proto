@@ -12,6 +12,11 @@ service UserService {
   rpc GetUserByUserName (UserNameRequest) returns (UserResponse) {};
 
   // --
+  // cmn_ Get User By User Id
+  // --
+  rpc GetUserById (UserIdRequest) returns (UserResponse) {};
+
+  // --
   // cmn_00008 Get Users
   // --
   rpc GetUsers (google.protobuf.Empty) returns (UsersResponse) {};
@@ -30,7 +35,11 @@ service UserService {
 message UserNameRequest {
   google.protobuf.StringValue user_name = 1;
 }
-  
+
+message UserIdRequest {
+  google.protobuf.Int64Value user_id = 1;
+}
+
 message UserResponse {
   User user = 1;
 }
