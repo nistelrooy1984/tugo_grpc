@@ -25,12 +25,21 @@ service UserService {
   // cmn_00010 User Login
   // --
   rpc UserLogin(LoginInfoRequest) returns (UserResponse) {};
+
+  // --
+  // cmn_00013 Get User By User Id
+  // --
+  rpc GetUserById (UserIdRequest) returns (UserResponse) {};
 }
 
 message UserNameRequest {
   google.protobuf.StringValue user_name = 1;
 }
-  
+
+message UserIdRequest {
+  google.protobuf.Int64Value user_id = 1;
+}
+
 message UserResponse {
   User user = 1;
 }
