@@ -12,11 +12,6 @@ service UserService {
   rpc GetUserByUserName (UserNameRequest) returns (UserResponse) {};
 
   // --
-  // cmn_ Get User By User Id
-  // --
-  rpc GetUserById (UserIdRequest) returns (UserResponse) {};
-
-  // --
   // cmn_00008 Get Users
   // --
   rpc GetUsers (google.protobuf.Empty) returns (UsersResponse) {};
@@ -30,6 +25,11 @@ service UserService {
   // cmn_00010 User Login
   // --
   rpc UserLogin(LoginInfoRequest) returns (UserResponse) {};
+
+  // --
+  // cmn_00013 Get User By User Id
+  // --
+  rpc GetUserById (UserIdRequest) returns (UserResponse) {};
 }
 
 message UserNameRequest {
