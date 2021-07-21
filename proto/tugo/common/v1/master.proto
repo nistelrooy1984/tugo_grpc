@@ -34,7 +34,7 @@ message WardsResponse {
 message Country {
   google.protobuf.Int64Value id = 1; // ID
   google.protobuf.StringValue name = 2; // Name
-  google.protobuf.StringValue code = 3; // Code
+  google.protobuf.Int64Value code = 3; // Code
   google.protobuf.StringValue code_name = 4; // Code Name
   google.protobuf.Int64Value phone_code = 5; // Phone Code
   google.protobuf.Int32Value order = 6; // Order
@@ -44,7 +44,7 @@ message Country {
 message Province {
   google.protobuf.Int64Value id = 1; // ID
   google.protobuf.StringValue name = 2; // Name
-  google.protobuf.StringValue code = 3; // Code
+  google.protobuf.Int64Value code = 3; // Code
   google.protobuf.StringValue code_name = 4; // Code Name
   google.protobuf.StringValue  division_type = 5; // Division Type
   google.protobuf.Int64Value phone_code = 6; // Phone Code
@@ -56,7 +56,7 @@ message Province {
 message District {
   google.protobuf.Int64Value id = 1; // ID
   google.protobuf.StringValue name = 2; // Name
-  google.protobuf.StringValue code = 3; // Code
+  google.protobuf.Int64Value code = 3; // Code
   google.protobuf.StringValue code_name = 4; // Code Name
   google.protobuf.StringValue division_type = 5; // Division Type
   google.protobuf.StringValue short_code_name = 6; // Short Code Name
@@ -68,7 +68,7 @@ message District {
 message Ward {
   google.protobuf.Int64Value id = 1; // ID
   google.protobuf.StringValue name = 2; // Name
-  google.protobuf.StringValue code = 3; // Code
+  google.protobuf.Int64Value code = 3; // Code
   google.protobuf.StringValue code_name = 4; // Code Name
   google.protobuf.StringValue division_type = 5; // Division Type
   google.protobuf.StringValue short_code_name = 6; // Short Code Name
