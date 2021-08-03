@@ -57,10 +57,7 @@ message UpsertUserResponse {
 }
 
 message LoginInfoRequest {
-  google.protobuf.StringValue user_name = 1; // User Name
-  google.protobuf.StringValue email = 2; // Email
-  google.protobuf.StringValue phone = 3; // Phone
-  google.protobuf.StringValue encrypted_password = 4; // Password
+  google.protobuf.StringValue user_info = 1; // User Info
 }
 
 message User {
