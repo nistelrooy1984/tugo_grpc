@@ -30,6 +30,11 @@ service UserService {
   // cmn_00013 Get User By User Id
   // --
   rpc GetUserById (UserIdRequest) returns (UserResponse) {};
+
+  // --
+  // cmn_00014 Function to get subordinates Users
+  // --
+  rpc GetRoleBasedSubordinateUsers (UserIdRequest) returns (UsersResponse) {};
 }
 
 message UserNameRequest {
