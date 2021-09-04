@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+
+package tugo.contacts.v1.common;
+
+message CommonMasterResponse {
+  repeated CommonMaster common_master = 1;
+}
+
+message CommonMaster {
+  google.protobuf.Int64Value id = 1;
+  google.protobuf.StringValue name = 2;
+}
