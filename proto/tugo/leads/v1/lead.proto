@@ -85,7 +85,7 @@ message Lead {
   google.protobuf.StringValue salutation = 18; // Salutation
   google.protobuf.StringValue other_phone = 19; // Other Phone
   google.protobuf.StringValue street = 20; // Street
-  google.protobuf.StringValue delete_flag = 21; // Delete Flag
+  google.protobuf.Int64Value delete_flag = 21; // Delete Flag
   google.protobuf.StringValue created_at = 22; // Created At
   google.protobuf.StringValue updated_at = 23; // Updated At
 }
