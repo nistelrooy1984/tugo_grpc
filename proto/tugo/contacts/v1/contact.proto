@@ -67,19 +67,26 @@ message UpsertContactsResponse {
 
 message Contact {
   google.protobuf.Int64Value id = 1; // ID
-  google.protobuf.StringValue first_name = 2; // First Name
-  google.protobuf.StringValue last_name = 3; // Last Name
-  google.protobuf.StringValue email = 4; // Email
-  google.protobuf.StringValue phone = 5; // Phone
-  google.protobuf.StringValue title = 6; // Phone
-  google.protobuf.Int64Value creator_id = 7; // Created By
-  google.protobuf.Int64Value owner_id = 8; // Assigned To
-  google.protobuf.Int64Value modified_by_id = 9; // Modified By
-  google.protobuf.Int64Value master_leadsource_id = 10; // Lead Source
-  google.protobuf.BoolValue is_converted_from_lead = 11; // Is Converted From Lead
-  google.protobuf.BoolValue is_do_not_call = 12; // Do Not Call
-  google.protobuf.StringValue source = 13; // Address
-  google.protobuf.StringValue description = 14; // Description
-  google.protobuf.StringValue created_at = 15; // Created At
-  google.protobuf.StringValue updated_at = 16; // Updated At
+  google.protobuf.StringValue salutation = 2; // Salutation
+  google.protobuf.StringValue first_name = 3; // First Name
+  google.protobuf.StringValue last_name = 4; // Last Name
+  google.protobuf.StringValue email = 5; // Email
+  google.protobuf.StringValue phone = 6; // Phone
+  google.protobuf.StringValue title = 7; // Phone
+  google.protobuf.Int64Value creator_id = 8; // Created By
+  google.protobuf.Int64Value owner_id = 9; // Assigned To
+  google.protobuf.Int64Value modified_by_id = 10; // Modified By
+  google.protobuf.Int64Value master_lead_source_id = 11; // Lead Source
+  google.protobuf.BoolValue is_converted_from_lead = 12; // Is Converted From Lead
+  google.protobuf.BoolValue is_do_not_call = 13; // Do Not Call
+  google.protobuf.StringValue birthday = 14; // Birthday
+  google.protobuf.Int64Value master_country_id = 15; // Country
+  google.protobuf.Int64Value master_province_id = 16; // Province
+  google.protobuf.Int64Value master_district_id = 17; // District
+  google.protobuf.Int64Value master_ward_id = 18; // Ward
+  google.protobuf.StringValue street = 19; // Street
+  google.protobuf.StringValue description = 20; // Description
+  google.protobuf.Int64Value delete_flag = 21; // Delete Flag
+  google.protobuf.StringValue created_at = 22; // Created At
+  google.protobuf.StringValue updated_at = 23; // Updated At
 }
