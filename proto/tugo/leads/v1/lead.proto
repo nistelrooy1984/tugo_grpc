@@ -30,6 +30,11 @@ service LeadService   {
   // led_00005 Upsert Leads
   // --
   rpc UpsertLeads(UpsertLeadsRequest) returns (UpsertLeadsResponse) {};
+
+  // --
+  // led_00006 Search Leads
+  // --
+  rpc SearchLeads(SearchRequest) returns (LeadsResponse);
 }
 
 message LeadIdRequest {
@@ -62,6 +67,14 @@ message UpsertLeadsRequest {
 
 message UpsertLeadsResponse {
   repeated Lead leads = 1;
+}
+
+message SearchRequest {
+  google.protobuf.StringValue first_name = 1;
+  google.protobuf.StringValue last_name = 2;
+  google.protobuf.StringValue phone = 3;
+  google.protobuf.StringValue email = 4;
+  google.protobuf.Int64Value owner_id = 5;
 }
 
 message Lead {
