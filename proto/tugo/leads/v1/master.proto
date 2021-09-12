@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+import "tugo/leads/v1/common/response.proto";
+
+package tugo.leads.v1;
+
+service MasterService {
+  // --
+  // cmn_00016 Get Table Master
+  // --
+  rpc ListMaster(ListMasterRequest) returns (common.CommonMasterResponse) {}
+}
+
+message ListMasterRequest {
+  google.protobuf.StringValue table_name = 1;
+}
